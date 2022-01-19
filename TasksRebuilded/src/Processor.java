@@ -2,7 +2,8 @@
 
 public class Processor {
     TaskList taskList = new TaskList();
-    public void proceed(String currentCommand)  {
+
+    public void proceed(String currentCommand) {
         Line line = new Line(currentCommand);
         switch (line.getCommandname()) {
             case "add":
@@ -15,8 +16,8 @@ public class Processor {
                 taskList.delete(Integer.parseInt(line.getCommandbody()));
                 break;
             case "completed":
-                if(line.getCommandbody() != "-")
-                taskList.complete(Integer.parseInt(line.getCommandbody()));
+                if (line.getCommandbody() != "-")
+                    taskList.complete(Integer.parseInt(line.getCommandbody()));
                 else
                     taskList.all(true);
                 break;

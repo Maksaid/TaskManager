@@ -6,20 +6,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TaskList {
-    private ArrayList<Line> taskList= new ArrayList<Line>();
+    private ArrayList<Line> taskList = new ArrayList<Line>();
     private StringBuilder stringFormatOfList = new StringBuilder();
-    public StringBuilder all(boolean FlagOnlyCompleted){
-        stringFormatOfList.delete(0,stringFormatOfList.capacity());
-        if(!FlagOnlyCompleted)
+
+    public StringBuilder all(boolean FlagOnlyCompleted) {
+        stringFormatOfList.delete(0, stringFormatOfList.capacity());
+        if (!FlagOnlyCompleted)
+            for (int i = 0; i < taskList.size(); i++) {
+                if (taskList.get(i).getCompleted() == 0) {
+                    stringFormatOfList.append("№" + taskList.get(i).getId() + " " + taskList.get(i).getCommandbody());
+                    stringFormatOfList.append("\n");
+                }
+            }
         for (int i = 0; i < taskList.size(); i++) {
-            if(taskList.get(i).getCompleted()==0){
-            stringFormatOfList.append("№" + taskList.get(i).getId() + " " + taskList.get(i).getCommandbody());
-            stringFormatOfList.append("\n");}
-        }
-        for (int i = 0; i < taskList.size(); i++) {
-            if(taskList.get(i).getCompleted()==1){
+            if (taskList.get(i).getCompleted() == 1) {
                 stringFormatOfList.append("№" + taskList.get(i).getId() + " " + taskList.get(i).getCommandbody());
-                stringFormatOfList.append("\n");}
+                stringFormatOfList.append("\n");
+            }
         }
         return stringFormatOfList;
     }
@@ -27,13 +30,14 @@ public class TaskList {
     public StringBuilder getStringFormatOfList() {
         return stringFormatOfList;
     }
-    public void add(Line line){
+
+    public void add(Line line) {
         taskList.add(line);
     }
 
     public void delete(int i) {
         for (int j = 0; j < taskList.size(); j++) {
-            if(taskList.get(j).getId() == i)
+            if (taskList.get(j).getId() == i)
                 taskList.remove(j);
         }
     }
@@ -43,9 +47,9 @@ public class TaskList {
         Scanner loader = null;
         try {
             loader = new Scanner(new FileReader(taskLine.getCommandbody()));
-            while(loader.hasNextLine()){
+            while (loader.hasNextLine()) {
                 String line = loader.nextLine();
-                taskList.add(new Line("-",line));
+                taskList.add(new Line("-", line));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -53,9 +57,10 @@ public class TaskList {
 
 
     }
-    public void complete(int i){
+
+    public void complete(int i) {
         for (int j = 0; j < taskList.size(); j++) {
-            if(taskList.get(j).getId() == i)
+            if (taskList.get(j).getId() == i)
                 taskList.get(j).setCompleted(1);
         }
     }
