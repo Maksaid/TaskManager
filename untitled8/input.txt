@@ -1,0 +1,24 @@
+add hui
+create-group huinya
+create-group v_huinye huinya
+add nihuya huinya
+add zalupa v_huinye
+add blya v_nihuya
+add pizda v_nihuya
+set-deadline 3 2022-05-04
+add yay 2022-08-08 huinya
+create-group v_v_huinye v_huinye
+add v_v_huinye v_v_huinye
+create-group v_v_huinyeB v_huinye
+add v_v_s v_v_huinyeB
+set-complited 9
+set-complited 2
+set-complited 3
+add-subtask Anton 4
+add-subtask nahui 4
+add-subtask poshel 4
+set-subtask-complited 9 4
+set-subtask-complited 10 4
+show
+set-subtask-complited 11 4
+show
